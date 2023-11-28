@@ -49,7 +49,7 @@ public class FileController {
       model.addAttribute("message", message);
     }
 
-    return "redirect:../files";
+    return "redirect:/files";
   }
 
   @GetMapping("/files")
@@ -64,7 +64,7 @@ public class FileController {
 
     model.addAttribute("files", fileInfos);
 
-    return "./Dashboard/files";
+    return "Dashboard/files";
   }
 
   @GetMapping("/files/{filename:.+}")

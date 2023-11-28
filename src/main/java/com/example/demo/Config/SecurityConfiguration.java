@@ -24,19 +24,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-        .authorizeRequests()
-        .antMatchers("/login", "/register").permitAll()
-        .antMatchers("/uploads/**","/budded/**", "/users/**").authenticated()
-        .antMatchers("/api/**").hasAnyRole("ROLE_USER", "ADMIN")
-        .and()
-        .formLogin()
-        .loginPage("/login")
-        .usernameParameter("username")
-        .passwordParameter("password")
-        .defaultSuccessUrl("/budded/list")
-        .failureUrl("/login-error")
-        .and()
-        .exceptionHandling().accessDeniedPage("/accessDenied");
+                .authorizeRequests(requests -> requests
+                        .antMatchers("/login", "/register").permitAll()
+                        .antMatchers("/uploads/**", "/budded/**", "/users/**").authenticated()
+                        .antMatchers("/api/**").hasAnyRole("ROLE_USER", "ADMIN"))
+                .formLogin(login -> login
+                        .loginPage("/login")
+                        .usernameParameter("username")
+                        .passwordParameter("password")
+                        .defaultSuccessUrl("/budded/list")
+                        .failureUrl("/login-error"))
+                .exceptionHandling(handling -> handling.accessDeniedPage("/accessDenied"));
 
         http.csrf().disable();
 

@@ -23,7 +23,7 @@ import java.security.Principal;
 @Controller
 @RequestMapping("/budded")
 public class UbudeheController {
-     @Autowired
+    @Autowired
     private EmailSenderServiceConfig sendEmail;
     private final UbudeheRepository repo;
 
@@ -34,26 +34,28 @@ public class UbudeheController {
 
     @GetMapping("/add")
     public String showRegisterForm(Ubudehe ubudehe) {
-        return "/Dashboard/add-citizen";
+        return "Dashboard/add-citizen";
     }
 
     @GetMapping("/list")
     public String showList(Model model) {
         model.addAttribute("viewCitizens", repo.findAll());
-        return "/Dashboard/viewCitizens";
+        return "Dashboard/viewCitizens";
     }
 
     @PostMapping("/register")
-    public String addCitizen(@Valid Ubudehe ubudehe, BindingResult result, Model model, RedirectAttributes redirectAttributes, Principal principal, @AuthenticationPrincipal User user) {
+    public String addCitizen(@Valid Ubudehe ubudehe, BindingResult result, Model model,
+            RedirectAttributes redirectAttributes, Principal principal, @AuthenticationPrincipal User user) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         try {
             if (result.hasErrors()) {
-                return "./Dashboard/add-citizen";
+                return "Dashboard/add-citizen";
             }
 
             repo.save(ubudehe);
-            sendEmail.sendCitizenEmail(ubudehe.getEmail(),"Citizen Registration",ubudehe.getFirstName()+" "+ubudehe.getLastName(),ubudehe.getCategory());
+            sendEmail.sendCitizenEmail(ubudehe.getEmail(), "Citizen Registration",
+                    ubudehe.getFirstName() + " " + ubudehe.getLastName(), ubudehe.getCategory());
 
             redirectAttributes.addFlashAttribute("message", "Information saved successfully!");
 
@@ -61,7 +63,7 @@ public class UbudeheController {
             redirectAttributes.addAttribute("message", e.getMessage());
         }
 
-        return "redirect:list";
+        return "redirect:/list";
     }
 
     @GetMapping("/edit/{id}")
@@ -69,20 +71,21 @@ public class UbudeheController {
         Ubudehe ubudehe = repo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid Id:" + id));
         model.addAttribute("budded", ubudehe);
-        return "/Dashboard/edit-citizen";
+        return "Dashboard/edit-citizen";
     }
 
     @PostMapping("/update/{id}")
     public String updateCitizen(@PathVariable("id") long id, @Valid Ubudehe ubudehe, BindingResult result,
-                                 Model model, RedirectAttributes redirectAttributes, Principal principal) {
+            Model model, RedirectAttributes redirectAttributes, Principal principal) {
 
         try {
             if (result.hasErrors()) {
                 ubudehe.setId(id);
-                return "/Dashboard/edit-citizen";
+                return "Dashboard/edit-citizen";
             }
             repo.save(ubudehe);
-            sendEmail.sendCitizenEmail(ubudehe.getAddress(),"Citizen Category Change",ubudehe.getFirstName()+" "+ubudehe.getLastName(),ubudehe.getCategory());
+            sendEmail.sendCitizenEmail(ubudehe.getAddress(), "Citizen Category Change",
+                    ubudehe.getFirstName() + " " + ubudehe.getLastName(), ubudehe.getCategory());
             model.addAttribute("viewCitizens", repo.findAll());
             redirectAttributes.addFlashAttribute("message", "Information updated successfully!");
 
@@ -90,7 +93,7 @@ public class UbudeheController {
             redirectAttributes.addAttribute("message", e.getMessage());
         }
 
-        return "redirect:../list";
+        return "redirect:/list";
     }
 
     @GetMapping("/delete/{id}")
@@ -107,7 +110,7 @@ public class UbudeheController {
             redirectAttributes.addAttribute("message", e.getMessage());
         }
 
-        return "redirect:../list";
+        return "redirect:/list";
     }
 
 }
