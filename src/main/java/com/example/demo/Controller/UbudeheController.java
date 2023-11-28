@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
-@RequestMapping("/budded")
+@RequestMapping("/budded/")
 public class UbudeheController {
     @Autowired
     private EmailSenderServiceConfig sendEmail;
@@ -32,18 +32,18 @@ public class UbudeheController {
         this.repo = repo;
     }
 
-    @GetMapping("/add")
+    @GetMapping("add")
     public String showRegisterForm(Ubudehe ubudehe) {
         return "Dashboard/add-citizen";
     }
 
-    @GetMapping("/list")
+    @GetMapping("list")
     public String showList(Model model) {
         model.addAttribute("viewCitizens", repo.findAll());
         return "Dashboard/viewCitizens";
     }
 
-    @PostMapping("/register")
+    @PostMapping("register")
     public String addCitizen(@Valid Ubudehe ubudehe, BindingResult result, Model model,
             RedirectAttributes redirectAttributes, Principal principal, @AuthenticationPrincipal User user) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -63,7 +63,7 @@ public class UbudeheController {
             redirectAttributes.addAttribute("message", e.getMessage());
         }
 
-        return "redirect:/list";
+        return "redirect:list";
     }
 
     @GetMapping("/edit/{id}")
@@ -74,7 +74,7 @@ public class UbudeheController {
         return "Dashboard/edit-citizen";
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping("update/{id}")
     public String updateCitizen(@PathVariable("id") long id, @Valid Ubudehe ubudehe, BindingResult result,
             Model model, RedirectAttributes redirectAttributes, Principal principal) {
 
@@ -93,7 +93,7 @@ public class UbudeheController {
             redirectAttributes.addAttribute("message", e.getMessage());
         }
 
-        return "redirect:/list";
+        return "redirect:list";
     }
 
     @GetMapping("/delete/{id}")
@@ -110,7 +110,7 @@ public class UbudeheController {
             redirectAttributes.addAttribute("message", e.getMessage());
         }
 
-        return "redirect:/list";
+        return "redirect:list";
     }
 
 }
