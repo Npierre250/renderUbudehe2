@@ -19,6 +19,18 @@
   <!-- Google Fonts-->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
   <link rel="stylesheet" href="../../Dash/assets/js/Lightweight-Chart/cssCharts.css"/>
+
+  <script>
+    function confirmAction(){
+      let confirmation = confirm("Are you sure you want to delete?");
+      if (confirmation) {
+        return true;
+      } else {
+       
+        return false;
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -73,7 +85,7 @@
                           <td>[[${file.name}]]</td>
                           <td><a th:href="@{${file.url}}">Download</a></td>
                           <td>
-                            <a th:href="@{'/uploads/files/delete/' + ${file.name}}" th:fileName="${file.name}" id="btnDelete"
+                            <a onclick="return confirmAction()" th:href="@{'/uploads/files/delete/' + ${file.name}}" th:fileName="${file.name}" id="btnDelete"
                                title="Delete this file"  class="btn btn-danger btn-delete">
                               Delete</a>
                           </td>
