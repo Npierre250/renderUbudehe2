@@ -32,7 +32,7 @@ public class FileController {
 
   @GetMapping("/files/new")
   public String newFile(Model model) {
-    return "./Dashboard/upload";
+    return "Dashboard/upload";
   }
 
   @PostMapping("/files/upload")
@@ -49,8 +49,10 @@ public class FileController {
       model.addAttribute("message", message);
     }
 
-    return "redirect:/files";
+    return "redirect:/uploads/files";
   }
+
+
 
   @GetMapping("/files")
   public String getListFiles(Model model) {
@@ -90,6 +92,6 @@ public class FileController {
           "Could not delete the file: " + filename + ". Error: " + e.getMessage());
     }
 
-    return "redirect:../../files";
+    return "redirect:/uploads/files";
   }
 }

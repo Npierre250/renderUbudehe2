@@ -84,10 +84,10 @@
                       <td th:text="${citizen.dob}"></td>
                       <td th:text="${citizen.martialStatus}"></td>
                       <td th:text="${citizen.category}"></td>
-                      <td><a th:href="@{/budded/edit/{id}(id=${citizen.id})}" class="btn btn-primary">
+                      <td><a onclick="return confirmEdit()" th:href="@{/budded/edit/{id}(id=${citizen.id})}" class="btn btn-primary">
                         Edit
                       </a>
-                        <a th:href="@{'/budded/delete/' + ${citizen.id}}"
+                        <a onclick="return confirmAction()" th:href="@{'/budded/delete/' + ${citizen.id}}"
                            class="btn btn-danger btn-delete">Delete</a>
                         <a href="/uploads/files/new"
                            class="btn btn-warning btn-delete">File Upload</a>
@@ -110,9 +110,28 @@
     </div>
     <!-- /. PAGE INNER  -->
   </div>
-  <!-- /. PAGE WRAPPER  -->
-  <!-- /. WRAPPER  -->
-  <!-- JS Scripts-->
+ <script>
+   function confirmAction() {
+      let confirmation = confirm("Are you sure you want to delete?");
+      if (confirmation) {
+        return true;
+      } else {
+       
+        return false;
+      }
+    }
+
+
+    function confirmEdit() {
+      let confirmation = confirm("Are you sure you want to edit?");
+      if (confirmation) {
+        return true;
+      } else {
+       
+        return false;
+      }
+    }
+ </script>
 
 </div>
 <!-- jQuery Js -->

@@ -63,7 +63,7 @@ public class UbudeheController {
             redirectAttributes.addAttribute("message", e.getMessage());
         }
 
-        return "redirect:list";
+        return "redirect:/budded/list";
     }
 
     @GetMapping("/edit/{id}")
@@ -93,7 +93,7 @@ public class UbudeheController {
             redirectAttributes.addAttribute("message", e.getMessage());
         }
 
-        return "redirect:list";
+        return "redirect:/budded/list";
     }
 
     @GetMapping("/delete/{id}")
@@ -110,7 +110,7 @@ public class UbudeheController {
             redirectAttributes.addAttribute("message", e.getMessage());
         }
 
-        return "redirect:list";
+        return "redirect:/budded/list";
     }
 
 }
