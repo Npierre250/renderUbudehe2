@@ -6,14 +6,10 @@ import com.example.demo.Domain.Ubudehe;
 import com.example.demo.Domain.User;
 import com.example.demo.Repositories.UbudeheRepository;
 import com.example.demo.Services.UserService;
-
-import javafx.beans.binding.IntegerBinding;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
