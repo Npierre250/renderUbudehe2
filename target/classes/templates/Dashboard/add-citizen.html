@@ -1,0 +1,177 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technicians</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="../Dash/assets/materialize/css/materialize.min.css" media="screen,projection" />
+    <!-- Bootstrap Styles-->
+    <link href="../Dash/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="../Dash/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="../Dash/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="../Dash/assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="../Dash/assets/js/Lightweight-Chart/cssCharts.css"/>
+</head>
+<body>
+    <div id="wrapper">
+        <div th:replace="Dashboard/shared/header"></div>
+
+
+
+        <!--/. NAV TOP  -->
+        <div th:replace="Dashboard/shared/sidebar"></div>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div class="header">
+                <h1 class="page-header">
+                    Citizens Page
+                </h1>
+
+
+            </div>
+
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-action">
+                                Add Citizen
+                            </div>
+                            <div class="card-content">
+                                <form class="col s12" method="post" th:action="@{/budded/register}" th:object="${ubudehe}">
+
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input type="text"  id="first_name" class="validate" th:field="*{firstName}" required />
+                                            <label for="first_name">First Name</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input type="text" id="last_name"  class="validate" th:field="*{lastName}" required />
+                                            <label for="last_name">Last Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input type="tel" id="phone" th:field="*{phone}" class="validate" required/>
+                                            <label for="phone">Phone</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <label >Gender</label><br/><br/>
+                                            <input type="radio" th:field="*{gender}" id="male" name="gender" value="Male">
+                                            <label for="male">Male</label><br>
+                                            <input type="radio" id="female" th:field="*{gender}" name="gender" value="Female">
+                                            <label for="female">Female</label><br>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <label >Date of Birth</label><br/><br/>
+                                            <input type="date" th:field="*{dob}" id="dob" class="validate" required/>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input type="text" id="address" th:field="*{address}" class="validate" required/>
+                                            <label for="address">Address</label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input type="text" id="email" th:field="*{email}" class="validate" required/>
+                                            <label for="email">Email</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <label >Martial Status</label><br/><br/>
+                                            <input type="radio" id="married" th:field="*{martialStatus}" name="martialStatus" value="Married">
+                                            <label for="married">Married</label><br>
+                                            <input type="radio" th:field="*{martialStatus}" id="widowed" name="martialStatus" value="Widowed">
+                                            <label for="widowed">Widowed</label><br>
+                                            <input type="radio" th:field="*{martialStatus}" id="separated" name="martialStatus" value="Separated">
+                                            <label for="separated">Separated</label><br>
+                                            <input type="radio" th:field="*{martialStatus}" id="divorced" name="martialStatus" value="Divorce">
+                                            <label for="divorced">Divorce</label><br>
+                                            <input type="radio" th:field="*{martialStatus}" id="single" name="martialStatus" value="Single">
+                                            <label for="single">Single</label><br>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <label >Category</label><br/><br/>
+                                            <input type="radio" id="1" th:field="*{category}" name="category" value="1">
+                                            <label for="1">1</label><br>
+                                            <input type="radio" id="2" th:field="*{category}" name="category" value="2">
+                                            <label for="2">2</label><br>
+                                            <input type="radio" id="3" th:field="*{category}" name="category" value="3">
+                                            <label for="3">3</label><br>
+                                            <input type="radio" id="4" th:field="*{category}" name="category" value="4">
+                                            <label for="4">4</label><br>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input type="submit" value="Submit" class="btn btn-danger" />
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="clearBoth"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer><p>All right reserved</p></footer>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="../Dash/assets/js/jquery-1.10.2.js"></script>
+
+    <!-- Bootstrap Js -->
+    <script src="../Dash/assets/js/bootstrap.min.js"></script>
+
+    <script src="../Dash/assets/materialize/js/materialize.min.js"></script>
+
+    <!-- Metis Menu Js -->
+    <script src="../Dash/assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="../Dash/assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="../Dash/assets/js/morris/morris.js"></script>
+
+
+    <script src="../Dash/assets/js/easypiechart.js"></script>
+    <script src="../Dash/assets/js/easypiechart-data.js"></script>
+
+    <script src="../Dash/assets/js/Lightweight-Chart/jquery.chart.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../Dash/assets/js/custom-scripts.js"></script>
+
+
+</body>
+</html>
+
