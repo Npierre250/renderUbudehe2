@@ -1,0 +1,121 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technicians</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="../Dash/assets/materialize/css/materialize.min.css" media="screen,projection" />
+    <!-- Bootstrap Styles-->
+    <link href="../Dash/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="../Dash/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="../Dash/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="../Dash/assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="../Dash/assets/js/Lightweight-Chart/cssCharts.css"/>
+</head>
+<body>
+    <div id="wrapper">
+        <div th:replace="Dashboard/shared/header"></div>
+
+
+
+        <!--/. NAV TOP  -->
+        <div th:replace="Dashboard/shared/sidebar"></div>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div class="header">
+                <h1 class="page-header">
+                    User Registration Page
+                </h1>
+
+
+            </div>
+
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-action">
+                                Create Account
+                            </div>
+                            <div class="card-content">
+                                <form class="col s12" method="post" th:action="@{/budded/registerUser}" th:object="${user1}">
+
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input type="text"  id="first_name" class="validate" th:field="*{firstName}" required />
+                                            <label for="first_name">First Name</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input type="text" id="last_name"  class="validate" th:field="*{lastName}" required />
+                                            <label for="last_name">Last Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input type="email" id="email" th:field="*{email}" class="validate" required/>
+                                            <label for="email">emai</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <label >Password</label><br/><br/>
+                                            <input type="password" th:field="*{password}" class="validate" required/>               
+                                        </div>
+
+                                    </div>
+                                  
+
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input type="submit" value="Submit" class="btn btn-second" />
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="clearBoth"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer><p>All right reserved</p></footer>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="../Dash/assets/js/jquery-1.10.2.js"></script>
+
+    <!-- Bootstrap Js -->
+    <script src="../Dash/assets/js/bootstrap.min.js"></script>
+
+    <script src="../Dash/assets/materialize/js/materialize.min.js"></script>
+
+    <!-- Metis Menu Js -->
+    <script src="../Dash/assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="../Dash/assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="../Dash/assets/js/morris/morris.js"></script>
+
+
+    <script src="../Dash/assets/js/easypiechart.js"></script>
+    <script src="../Dash/assets/js/easypiechart-data.js"></script>
+
+    <script src="../Dash/assets/js/Lightweight-Chart/jquery.chart.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../Dash/assets/js/custom-scripts.js"></script>
+
+
+</body>
+</html>
+

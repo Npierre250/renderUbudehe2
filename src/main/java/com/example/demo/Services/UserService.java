@@ -1,5 +1,6 @@
 package com.example.demo.Services;
 
+import com.example.demo.Domain.Ubudehe;
 import com.example.demo.Domain.User;
 import com.example.demo.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,11 @@ public class UserService {
         repo.save(user);
     }
 
-    public User get(Integer id){
+    public User get(Long id){
         return repo.findById(id).get();
     }
 
-    public void delete(Integer id){
+    public void delete(Long id){
         repo.deleteById(id);
     }
     @Transactional
@@ -39,5 +40,8 @@ public class UserService {
         return findByEmail(email).isPresent();
     }
 
+public User findUserById(Long id){
+    return repo.findById(id).get();
+}
 
 }

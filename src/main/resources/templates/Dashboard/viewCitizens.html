@@ -19,6 +19,28 @@
   <!-- Google Fonts-->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
   <link rel="stylesheet" href="../Dash/assets/js/Lightweight-Chart/cssCharts.css"/>
+   <script>
+   function confirmAction() {
+      let confirmation = confirm("Are you sure you want to delete?");
+      if (confirmation) {
+        return true;
+      } else {
+       
+        return false;
+      }
+    }
+
+
+    function confirmEdit() {
+      let confirmation = confirm("Are you sure you want to edit?");
+      if (confirmation) {
+        return true;
+      } else {
+       
+        return false;
+      }
+    }
+ </script>
 </head>
 <body>
 
@@ -36,7 +58,7 @@
         Citizens Page
       </h1>
 
-      <a style="margin-left:30px" class="btn btn-danger" href="/budded/add">Add new</a>
+      <a style="margin-left:30px" class="btn btn-second" href="/budded/add">Add new</a>
     </div>
 
     <div id="page-inner">
@@ -84,7 +106,7 @@
                       <td th:text="${citizen.dob}"></td>
                       <td th:text="${citizen.martialStatus}"></td>
                       <td th:text="${citizen.category}"></td>
-                      <td><a onclick="return confirmEdit()" th:href="@{/budded/edit/{id}(id=${citizen.id})}" class="btn btn-primary">
+                      <td><a onclick="return confirmEdit()" th:href="@{/budded/edit/{id}(id=${citizen.id})}" class="btn btn-second">
                         Edit
                       </a>
                         <a onclick="return confirmAction()" th:href="@{'/budded/delete/' + ${citizen.id}}"
@@ -110,28 +132,6 @@
     </div>
     <!-- /. PAGE INNER  -->
   </div>
- <script>
-   function confirmAction() {
-      let confirmation = confirm("Are you sure you want to delete?");
-      if (confirmation) {
-        return true;
-      } else {
-       
-        return false;
-      }
-    }
-
-
-    function confirmEdit() {
-      let confirmation = confirm("Are you sure you want to edit?");
-      if (confirmation) {
-        return true;
-      } else {
-       
-        return false;
-      }
-    }
- </script>
 
 </div>
 <!-- jQuery Js -->

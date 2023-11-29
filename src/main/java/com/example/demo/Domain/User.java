@@ -23,7 +23,7 @@ public class User {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     private Boolean active;
     @NotEmpty(message = "Password is required!")
     @Size(min=7, message = "Password should be at least 8 characters long")
@@ -42,7 +42,5 @@ public class User {
     private LocalDateTime createDateTime;
     @UpdateTimestamp
     private LocalDateTime updateDateTime;
-
-
 
 }
